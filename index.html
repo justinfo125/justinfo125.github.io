@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Interactive 3D Portfolio</title>
+    <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
+    
+    <style>
+        body { margin: 0; background: #1a1a1a; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
+        #api-frame { width: 100vw; height: 100vh; border: none; display: block; }
+        
+        /* POPUP CARD */
+        #info-card {
+            display: none;
+            position: absolute; top: 50%; right: 5%; transform: translateY(-50%);
+            width: 320px; background: rgba(20, 20, 20, 0.95); color: #fff; padding: 30px;
+            border-radius: 12px; border-left: 5px solid #00d2ff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6); z-index: 999;
+        }
+        #info-card.visible { display: block; }
+        h2 { margin-top: 0; color: #00d2ff; text-transform: uppercase; }
+        p { line-height: 1.6; color: #ccc; }
+        .close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #555; cursor: pointer; font-size: 18px; }
+        .close-btn:hover { color: white; }
+
+        /* DEBUG CONSOLE - The Important Part */
+        #debug-console {
+            position: absolute; bottom: 10px; left: 10px;
+            background: rgba(0,0,0,0.85); color: #00ff00; padding: 15px;
+            font-family: monospace; font-size: 13px; border-radius: 4px;
+            pointer-events: none; z-index: 1000; max-width: 80%;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <iframe src="" id="api-frame" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    
+    <div id="debug-console">System Ready. Click an object to trace its name.</div>
+
+    <div id="info-card">
+        <button class="close-btn" onclick="document.getElementById('info-card').style.display='none'">✕</button>
+        <h2 id="card-title">Title</h2>
+        <p id="card-content">Content</p>
+    </div>
+
+    <script>
+        var uid = '86954f4417f24379bcbc5d38d0c6bd7c'; 
+
+        // 1. CONTENT
+        var myPortfolio = {
+            "EXPERIENCE": { title: "About & Experience", text: "I am the power source! 3 years experience in embedded systems." },
+            "SKILLS":     { title: "Technical Skills",   text: "Python, C++, Circuit Analysis, PCB Design." },
+            "PROJECTS":   { title: "My Projects",        text: "Smart Home Sensor, Drone Controller, 3D Portfolio." }
+        };
+
+        // 2. RULES (Lowercase)
+        var keywordRules = [
+            { keywords: ["battery", "switch"], category: "EXPERIENCE" },
+            { keywords: ["wire", "cable"],     category: "SKILLS" },
+            { keywords: ["bulb", "light"],     category: "PROJECTS" }
+        ];
+
+        var iframe = document.getElementById( 'api-frame' );
+        var client = new Sketchfab( iframe );
+        var debug = document.getElementById('debug-console');
+
+        client.init( uid, {
+            success: function onSuccess( api ){
+                api.start();
+                api.addEventListener( 'viewerready', function() {
+                    api.addEventListener( 'click', function( info ) {
+                        if(!info.instanceID) { debug.innerHTML = "Clicked Empty Space"; return; }
+
+                        api.getNodeMap(function(err, nodes){
+                            var currentNode = nodes[info.instanceID];
+                            var foundCategory = null;
+                            var nameChain = []; // We will store every name we find here
+
+                            // --- TRAVERSE UP THE TREE ---
+                            while (currentNode) {
+                                var name = currentNode.name;
+                                
+                                // Record the name for debugging (or "undefined" if missing)
+                                nameChain.push(name ? name : "undefined");
+
+                                if (name) {
+                                    var lowerName = name.toLowerCase();
+                                    // Check all rules
+                                    for (var i = 0; i < keywordRules.length; i++) {
+                                        var rule = keywordRules[i];
+                                        for (var k = 0; k < rule.keywords.length; k++) {
+                                            if (lowerName.indexOf(rule.keywords[k]) !== -1) {
+                                                foundCategory = rule.category;
+                                                break;
+                                            }
+                                        }
+                                        if (foundCategory) break;
+                                    }
+                                }
+                                if (foundCategory) break; // Found it! Stop looking.
+
+                                // Go up one level
+                                if (currentNode.parentID) {
+                                    currentNode = nodes[currentNode.parentID];
+                                } else {
+                                    currentNode = null;
+                                }
+                            }
+
+                            // --- REPORT FINDINGS ---
+                            if (foundCategory) {
+                                debug.innerHTML = "SUCCESS! Match found in chain: <br>" + nameChain.join(" &larr; ");
+                                
+                                var data = myPortfolio[foundCategory];
+                                document.getElementById('card-title').innerHTML = data.title;
+                                document.getElementById('card-content').innerHTML = data.text;
+                                document.getElementById('info-card').style.display = 'block';
+                            } else {
+                                // PRINT THE CHAIN SO WE CAN SEE WHAT HAPPENED
+                                debug.innerHTML = "NO MATCH. Checked these names:<br>" + nameChain.join(" &larr; ");
+                            }
+                        });
+                    }, { pick: 'slow' } );
+                });
+            },
+            error: function onError() { console.log( 'Viewer error' ); }
+        } );
+    </script>
+</body>
+</html>
