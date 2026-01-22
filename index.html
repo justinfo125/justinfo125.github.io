@@ -5,7 +5,6 @@
     <title>Justin Cheong - Portfolio</title>
     <style>
         /* --- FONTS --- */
-        /* NOTE: If you moved fonts to a 'fonts' folder, change url to 'fonts/Phenomena-ExtraBold.otf' */
         @font-face {
             font-family: 'Phenomena';
             src: url('Phenomena-ExtraBold.otf'); 
@@ -17,7 +16,7 @@
 
         body { 
             margin: 0; 
-            background-color: #cccccc; 
+            background-color: #cccccc; /* Silver Background */
             overflow: hidden; 
             font-family: 'Phenomena', 'Segoe UI', sans-serif; 
         }
@@ -38,7 +37,7 @@
         }
 
         .nav-btn {
-            background: #000000; color: #ffffff;
+            background: #000000; color: #ffffff; /* Black Buttons */
             padding: 10px 20px; font-family: 'Phenomena', sans-serif;
             font-weight: bold; font-size: 18px;
             cursor: pointer; border-radius: 6px;
@@ -228,7 +227,6 @@
     </style>
 
     <script>
-        // NOTE: If you moved audio to an 'audio' folder, update these paths!
         const audio = new Audio("No_SFX-2023-05-02_-_Galaxys_Endless_Expanse_-_www.FesliyanStudios.com.mp3");
         audio.loop = true; audio.volume = 0.15; 
 
@@ -469,8 +467,8 @@
         }
 
         function spawnRocket() {
-            // Updated Path for rocket.glb
-            loader.load( './models/rocket.glb', function ( gltf ) {
+            // UPDATED PATH: rocket.glb (Root)
+            loader.load( 'rocket.glb', function ( gltf ) {
                 rocketModel = gltf.scene; rocketModel.updateMatrixWorld(true);
                 const box = new THREE.Box3().setFromObject(rocketModel);
                 const center = box.getCenter(new THREE.Vector3()); const size = box.getSize(new THREE.Vector3());
@@ -505,8 +503,8 @@
             introActive = false; zoomActive = false; controls.autoRotate = false;
         });
 
-        // --- LOAD MODEL (./models/model.glb) + ANIMATED TEXTURE ---
-        loader.load( './models/model.glb', function ( gltf ) {
+        // --- LOAD MODEL (model.glb) + ANIMATED TEXTURE ---
+        loader.load( 'model.glb', function ( gltf ) {
             loadedModel = gltf.scene; scene.add( loadedModel );
             document.getElementById('loader').style.display = 'none';
             
