@@ -5,6 +5,7 @@
     <title>Justin Cheong - Portfolio</title>
     <style>
         /* --- FONTS --- */
+        /* NOTE: If you moved fonts to a 'fonts' folder, change url to 'fonts/Phenomena-ExtraBold.otf' */
         @font-face {
             font-family: 'Phenomena';
             src: url('Phenomena-ExtraBold.otf'); 
@@ -83,14 +84,14 @@
         .key-action { font-weight: 600; color: #ddd; }
         .key-bind { background: #333; color: #00d2ff; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; font-family: monospace; }
 
-        /* --- NEW STATUS TAB (IN PROGRESS) --- */
+        /* --- STATUS TAB (IN PROGRESS) --- */
         #status-tab {
             position: absolute; bottom: 30px; left: 30px;
-            background: #000; border: 2px solid #ffaa00; /* Caution Yellow */
+            background: #000; border: 2px solid #ffaa00; 
             color: #ffaa00; padding: 12px 20px; border-radius: 6px;
             font-family: 'Phenomena', sans-serif; font-size: 20px; font-weight: bold;
             z-index: 100; display: flex; align-items: center; gap: 12px;
-            pointer-events: none; /* Just a label */
+            pointer-events: none; 
             box-shadow: 0 0 20px rgba(255, 170, 0, 0.2);
             letter-spacing: 1px;
         }
@@ -227,6 +228,7 @@
     </style>
 
     <script>
+        // NOTE: If you moved audio to an 'audio' folder, update these paths!
         const audio = new Audio("No_SFX-2023-05-02_-_Galaxys_Endless_Expanse_-_www.FesliyanStudios.com.mp3");
         audio.loop = true; audio.volume = 0.15; 
 
@@ -412,6 +414,19 @@
         const controls = new OrbitControls( camera, renderer.domElement );
         controls.enableDamping = true; controls.enablePan = true; controls.enableZoom = true;
         
+        // --- ANIMATED TEXTURE GENERATOR ---
+        function createFlowTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 64; canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#000000'; ctx.fillRect(0,0,64,64);
+            ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, 64, 32); 
+            const tex = new THREE.CanvasTexture(canvas);
+            tex.wrapS = THREE.RepeatWrapping; tex.wrapT = THREE.RepeatWrapping;
+            tex.repeat.set(4, 1); return tex;
+        }
+        
+        let wireTexture = null;
         let rocketContainer = null, rocketModel = null;
         const velocity = new THREE.Vector3(0, 0, 0);
         const acceleration = 0.01, friction = 0.93, maxSpeed = 0.15;      
@@ -447,7 +462,6 @@
 
         function createExplosion(pos) {
             const geo = new THREE.SphereGeometry(1, 32, 32);
-            // SOLID EXPLOSION FIX
             const mat = new THREE.MeshBasicMaterial({ color: 0xffff00, transparent: true, opacity: 1.0 });
             explosion = new THREE.Mesh(geo, mat);
             explosion.position.copy(pos); explosion.scale.set(0.1, 0.1, 0.1);
@@ -455,7 +469,8 @@
         }
 
         function spawnRocket() {
-            loader.load( 'rocket.glb', function ( gltf ) {
+            // Updated Path for rocket.glb
+            loader.load( './models/rocket.glb', function ( gltf ) {
                 rocketModel = gltf.scene; rocketModel.updateMatrixWorld(true);
                 const box = new THREE.Box3().setFromObject(rocketModel);
                 const center = box.getCenter(new THREE.Vector3()); const size = box.getSize(new THREE.Vector3());
@@ -490,9 +505,27 @@
             introActive = false; zoomActive = false; controls.autoRotate = false;
         });
 
-        loader.load( 'model.glb', function ( gltf ) {
+        // --- LOAD MODEL (./models/model.glb) + ANIMATED TEXTURE ---
+        loader.load( './models/model.glb', function ( gltf ) {
             loadedModel = gltf.scene; scene.add( loadedModel );
             document.getElementById('loader').style.display = 'none';
+            
+            wireTexture = createFlowTexture();
+
+            loadedModel.traverse((child) => {
+                if (child.isMesh) {
+                    const n = child.name.toLowerCase();
+                    if (n.includes('wire') && !n.includes('word') && !n.includes('text')) {
+                        child.material = new THREE.MeshStandardMaterial({
+                            color: 0x333333,       
+                            emissive: 0x00ff88,    
+                            emissiveMap: wireTexture,
+                            emissiveIntensity: 2.0
+                        });
+                    }
+                }
+            });
+
             const box = new THREE.Box3().setFromObject( loadedModel );
             const center = box.getCenter( new THREE.Vector3() ); const size = box.getSize( new THREE.Vector3() );
             loadedModel.position.x += (loadedModel.position.x - center.x) - 1.1;
@@ -590,6 +623,8 @@
 
         function animate() {
             requestAnimationFrame( animate );
+            if (wireTexture) { wireTexture.offset.x -= 0.01; } // ANIMATE WIRES
+
             if (explosion) {
                 explosion.scale.addScalar(0.15);
                 explosion.material.opacity -= 0.04;
