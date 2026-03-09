@@ -172,12 +172,11 @@
         
         #modal-info { 
             flex: 11; padding: 80px; 
-            background: #111; /* Dark Background */
-            color: #fff; /* White Text */
+            background: #111; 
+            color: #fff; 
             overflow-y: auto; display: flex; flex-direction: column; justify-content: flex-start; 
         }
 
-        /* DEFAULT TOP IMAGE */
         #modal-project-img {
             width: 100%; max-height: 350px; object-fit: cover;
             border-radius: 12px; margin-bottom: 25px; display: none; 
@@ -185,13 +184,11 @@
             transition: box-shadow 0.3s ease;
         }
 
-        /* --- PROJECT IMAGE STYLING --- */
         .project-img {
             width: 100%; height: auto; object-fit: contain; border-radius: 8px; margin: 20px 0; 
             border: 3px solid #fff; display: block;
         }
         
-        /* --- PLACEHOLDER FOR MISSING IMAGES --- */
         .project-img-placeholder {
             width: 100%; height: 250px; background: #000;
             border: 3px dashed #ffaa00; border-radius: 8px;
@@ -211,9 +208,8 @@
             padding-bottom: 15px; line-height: 1; font-weight: 700;
         }
         
-        /* CONTENT STYLING */
         .content-body { 
-            color: #ddd; /* Light Grey Text */
+            color: #ddd; 
             line-height: 1.6; 
             font-size: 20px; 
             font-family: 'Oswald', sans-serif;
@@ -222,7 +218,7 @@
         }
         
         p {
-            color: #ddd; /* Light Grey Text */
+            color: #ddd; 
             line-height: 1.6;
             font-size: 20px;
             white-space: pre-wrap;
@@ -234,23 +230,21 @@
         h3 { font-family: 'Oswald', sans-serif; font-size: 32px; color: #fff; margin-top: 10px; margin-bottom: 10px; line-height: 1; font-weight: 600; }
         .project-divider { border: 0; border-top: 2px solid #444; margin: 50px 0; }
         
-        /* --- ABOUT ME & SKILLS STYLING --- */
         .about-role { font-family: 'Oswald', sans-serif; font-size: 26px; color: #00d2ff; letter-spacing: 1px; margin-bottom: 5px; font-weight: 600; }
         
         .about-school { 
             font-family: 'Oswald', sans-serif;
             font-size: 20px; 
             font-weight: 500; 
-            color: #aaa; /* Lighter Grey */
+            color: #aaa; 
             margin-bottom: 20px; 
             letter-spacing: 1px;
         }
 
-        /* The Grid for Stats */
         .specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 25px 0; }
         
         .spec-item { 
-            border: 2px solid #fff; /* White border */
+            border: 2px solid #fff; 
             border-radius: 6px; padding: 10px; text-align: center; transition: transform 0.2s; 
         }
         .spec-item:hover { transform: translateY(-3px); border-color: #00d2ff; box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2); }
@@ -267,14 +261,12 @@
         
         .spec-value { display: block; font-family: 'Oswald', sans-serif; font-size: 22px; color: #fff; line-height: 1; font-weight: 600; }
 
-        /* Skill Categories */
         .skill-category-label { 
             font-size: 16px; font-family: 'Oswald', sans-serif; font-weight: 700; 
             color: #fff; text-transform: uppercase; margin: 15px 0 8px 0; 
             border-left: 4px solid #00d2ff; padding-left: 10px; letter-spacing: 1px; 
         }
         
-        /* SKILLS CONTAINER */
         .skills-container { 
             margin-top: 15px; 
             background: #e8e8e8; 
@@ -294,7 +286,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- EXPERIENCE & EDUCATION BOX STYLING --- */
         .resume-header {
             font-size: 30px;
             font-weight: 700;
@@ -328,7 +319,6 @@
         }
         #close-btn:hover { color: #00d2ff; }
 
-        /* --- UPDATED TUTORIAL OVERLAY (Smaller) --- */
         .overlay-screen {
             display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px);
@@ -337,17 +327,17 @@
         }
 
         .tutorial-content { 
-            max-width: 550px; /* Reduced width */
-            padding: 30px;    /* Reduced padding */
+            max-width: 550px; 
+            padding: 30px;    
             border: 2px solid #00d2ff; border-radius: 20px; 
             background: rgba(0,0,0,0.6); box-shadow: 0 0 60px rgba(0, 210, 255, 0.15); 
         }
         .tutorial-title { 
-            font-size: 48px; /* Smaller Title */
+            font-size: 48px; 
             font-family: 'Oswald', sans-serif; margin-bottom: 15px; color: #fff; text-shadow: 0 0 20px #00d2ff; font-weight: 700; 
         }
         .tutorial-text { 
-            font-size: 20px; /* Smaller Text */
+            font-size: 20px; 
             line-height: 1.4; margin-bottom: 30px; color: #ddd; font-family: 'Oswald', sans-serif; font-weight: 300; 
         }
         
@@ -543,6 +533,7 @@
                     <li class="skill-tag">Oscilloscopes</li>
                     <li class="skill-tag">Git / Linux</li>
                     <li class="skill-tag">Circuit Design</li>
+                    <li class="skill-tag">BJT Analysis</li>
                 </ul>
             `
         };
@@ -558,7 +549,7 @@
                     <div class="resume-job-title">Boston University College of Engineering</div>
                     <div class="resume-detail-box">B.S. in Electrical Engineering (Expected May 2027)</div>
                     <div class="resume-detail-box">Dean's List Recipient (4 Semesters)</div>
-                    <div class="resume-detail-box">Relevant Coursework: Linear Algebra, Multivariable Calculus, Deep Learning, Advanced Data Structures and Algorithms</div>
+                    <div class="resume-detail-box">Relevant Coursework: Analog Electronics, Control Systems, Linear Algebra, Deep Learning</div>
                 </div>
 
                 <div class="resume-header">Experience</div>
@@ -571,7 +562,6 @@
             `
         };
         
-        // --- UPDATED ACHIEVEMENTS (Formatted) ---
         const contentAchievements = { 
             title: "Achievements",  
             mini: "Making the switch.",    
@@ -594,26 +584,73 @@
             `
         };
         
-        // --- PROJECT DATA ---
         const contentProjects = { 
             title: "Projects", 
             mini: "Bright Ideas.",          
             color: "#ffaa00",
             text: `
+                <h3>DOD 440 Envelope Filter / Auto-Wah</h3>
+                <div class="project-img-placeholder glow-yellow">
+                    <span>IMAGE IN PROGRESS</span>
+                </div>
+                <p>Engineered an analog envelope filter pedal that senses guitar signal amplitude and modulates filter characteristics in real time, demonstrating practical application of op-amp circuits, rectifiers, RC timing networks, and optoelectronic control elements.</p>
+                <div class="skills-container">
+                    <div class="skills-title">Skills Used</div>
+                    <ul class="skills-list">
+                        <li class="skill-tag">JRC4558 Op-Amp</li>
+                        <li class="skill-tag">Optoelectronic Control</li>
+                        <li class="skill-tag">Analog Audio Processing</li>
+                        <li class="skill-tag">RC Timing Networks</li>
+                        <li class="skill-tag">Virtual Ground Biasing</li>
+                    </ul>
+                </div>
+
+                <hr class="project-divider">
+
+                <h3>Multistage BJT Amplifier Design</h3>
+                <img src="portfolio_photos/multistage.png" class="project-img glow-yellow" alt="Multistage Amplifier">
+                <p>Designed and prototyped a +90 V/V three-stage BJT amplifier, optimizing DC biasing across a 15V rail to manage inter-stage "bias-creep" while achieving a high 52.4 kΩ input resistance.</p>
+                <p>Characterized system performance by identifying saturation limits in high-gain stages and analyzing bandwidth constraints (fH = 120 kHz) caused by the Miller Effect and parasitic capacitances.</p>
+                <div class="skills-container">
+                    <div class="skills-title">Skills Used</div>
+                    <ul class="skills-list">
+                        <li class="skill-tag">BJT Small-Signal Modeling</li>
+                        <li class="skill-tag">Miller Effect Analysis</li>
+                        <li class="skill-tag">Inter-stage Biasing</li>
+                        <li class="skill-tag">Hardware Prototyping</li>
+                    </ul>
+                </div>
+
+                <hr class="project-divider">
+
+                <h3>Optical Signal-to-Audio Synthesizer</h3>
+                <div class="project-img-placeholder glow-yellow">
+                    <span>IMAGE IN PROGRESS</span>
+                </div>
+                <p>Developed a light-sensitive audio synthesizer (Optical Theremin) using a TLC555 timer IC and a phototransistor array to translate real-time ambient light fluctuations into variable frequency square-wave tones.</p>
+                <div class="skills-container">
+                    <div class="skills-title">Skills Used</div>
+                    <ul class="skills-list">
+                        <li class="skill-tag">TLC555 Timer</li>
+                        <li class="skill-tag">Optoelectronics</li>
+                        <li class="skill-tag">Frequency Modulation</li>
+                        <li class="skill-tag">Analog Prototyping</li>
+                    </ul>
+                </div>
+
+                <hr class="project-divider">
+
                 <h3>Smart Glasses HUD</h3>
                 <div class="project-img-placeholder glow-yellow">
                     <span>IMAGE IN PROGRESS</span>
                 </div>
                 <p>Designed and assembled a wearable optical system using a beam-splitter and semi-reflective combiner glass to overlay digital notifications onto a transparent lens.</p>
-                <p>Engineered an integrated hardware platform using an Arduino microcontroller to drive micro-OLED displays.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
                         <li class="skill-tag">Arduino</li>
-                        <li class="skill-tag">C++</li>
                         <li class="skill-tag">Optics & Physics</li>
                         <li class="skill-tag">Hardware Prototyping</li>
-                        <li class="skill-tag">Circuit Design</li>
                     </ul>
                 </div>
 
@@ -621,15 +658,13 @@
 
                 <h3>Interactive 3D Portfolio</h3>
                 <img src="portfolio_photos/portfolio.png" class="project-img glow-yellow" alt="Portfolio Website">
-                <p>Designed and developed an immersive 3D portfolio website to showcase engineering projects. Built a custom interactive scene using Three.js, featuring a navigable circuit board environment with animated textures and dynamic camera controls.</p>
+                <p>Designed and developed an immersive 3D portfolio website using Three.js, featuring a navigable circuit board environment with animated textures and dynamic camera controls.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
-                        <li class="skill-tag">JavaScript (ES6+)</li>
+                        <li class="skill-tag">JavaScript</li>
                         <li class="skill-tag">Three.js</li>
                         <li class="skill-tag">WebGL</li>
-                        <li class="skill-tag">HTML5 & CSS3</li>
-                        <li class="skill-tag">3D Asset Integration</li>
                     </ul>
                 </div>
 
@@ -637,54 +672,29 @@
 
                 <h3>Coin-Collecting Robot (HackHardware)</h3>
                 <img src="portfolio_photos/rover.png" class="project-img glow-yellow" alt="Robot">
-                <p>Engineered a servo-controlled robotic arm outfitted with a magnet mechanism to pick up and deposit metallic coins into point-scoring bins (Gold, Silver, Bronze).</p>
+                <p>Engineered a servo-controlled robotic arm outfitted with a magnet mechanism to pick up and deposit metallic coins into point-scoring bins.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
-                        <li class="skill-tag">C++</li>
                         <li class="skill-tag">Arduino</li>
-                        <li class="skill-tag">Servo & DC Motors</li>
-                        <li class="skill-tag">Electromagnetism</li>
+                        <li class="skill-tag">Servo Motors</li>
                         <li class="skill-tag">SolidWorks (CAD)</li>
                     </ul>
                 </div>
 
                 <hr class="project-divider">
 
-                <h3>Tetris-inspired Game (Android)</h3>
-                <img src="portfolio_photos/TetrTriDiMonoTris.png" class="project-img glow-yellow" alt="Tetris Game">
-                <p>Developed a full-featured Android game app. Created custom XML layouts for the game grid and UI controls. Integrated background audio services and touch-based control logic in Java.</p>
-                <div class="skills-container">
-                    <div class="skills-title">Skills Used</div>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Java</li>
-                        <li class="skill-tag">Android Studio</li>
-                        <li class="skill-tag">XML Layouts</li>
-                        <li class="skill-tag">GitLab (Version Control)</li>
-                        <li class="skill-tag">Object-Oriented Programming</li>
-                    </ul>
-                </div>
-
-                <hr class="project-divider">
-
-                <h3>Whack-A-Mole (FPGA)</h3>
-                <img src="portfolio_photos/whack_a_mole.png" class="project-img glow-yellow" alt="Whack-A-Mole FPGA">
-                <p>Implemented a complete game on an FPGA board using Verilog. Designed complex digital logic state machines to control onboard LEDs acting as "moles," handle asynchronous user button inputs, and manage scoring and timing.</p>
+                <h3>Point-to-Point Communication Device (FPGA)</h3>
+                <img src="portfolio_photos/whack_a_mole.png" class="project-img glow-yellow" alt="FPGA Project">
+                <p>Implemented a digital communication system on an FPGA using Verilog, designing state machines for signal encoding and asynchronous protocols.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
                         <li class="skill-tag">Verilog</li>
                         <li class="skill-tag">FPGA Design</li>
                         <li class="skill-tag">Digital Logic</li>
-                        <li class="skill-tag">Finite State Machines</li>
-                        <li class="skill-tag">ModelSim</li>
                     </ul>
                 </div>
-
-                <hr class="project-divider">
-
-                <h3>Other Projects</h3>
-                <p><strong>Acoustic Heart Rate Monitor:</strong> Built an op-amp circuit to amplify heart sounds.</p>
             `
         };
 
@@ -723,7 +733,6 @@
         const controls = new OrbitControls( camera, renderer.domElement );
         controls.enableDamping = true; controls.enablePan = true; controls.enableZoom = true;
         
-        // --- ANIMATED TEXTURE GENERATOR ---
         function createFlowTexture() {
             const canvas = document.createElement('canvas');
             canvas.width = 64; canvas.height = 64;
@@ -778,7 +787,6 @@
         }
 
         function spawnRocket() {
-            // UPDATED: PATH SET TO ROOT
             loader.load( './rocket.glb', function ( gltf ) {
                 rocketModel = gltf.scene; rocketModel.updateMatrixWorld(true);
                 const box = new THREE.Box3().setFromObject(rocketModel);
@@ -814,7 +822,6 @@
             introActive = false; zoomActive = false; controls.autoRotate = false;
         });
 
-        // --- LOAD MODEL (model.glb) + ANIMATED TEXTURE ---
         loader.load( './model.glb', function ( gltf ) {
             loadedModel = gltf.scene; scene.add( loadedModel );
             document.getElementById('loader').style.display = 'none';
@@ -890,10 +897,8 @@
             modal.style.display = 'flex'; 
             document.getElementById('popup-title').innerText = currentSelection.title;
             
-            // --- INJECT HTML CONTENT ---
             document.getElementById('popup-content').innerHTML = currentSelection.text;
             
-            // COLOR THE SKILLS BORDER DYNAMICALLY
             const skillsDivs = document.querySelectorAll('.skills-container');
             skillsDivs.forEach(div => {
                 if(currentSelection.color) {
@@ -901,7 +906,6 @@
                 }
             });
             
-            // COLOR THE ABOUT ME CATEGORIES DYNAMICALLY
             const categoryLabels = document.querySelectorAll('.skill-category-label');
             categoryLabels.forEach(label => {
                 if(currentSelection.color) {
@@ -909,7 +913,6 @@
                 }
             });
 
-            // COLOR THE EXPERIENCE BOX BORDERS DYNAMICALLY
             const detailBoxes = document.querySelectorAll('.resume-detail-box');
             detailBoxes.forEach(box => {
                 if(currentSelection.color) {
@@ -917,20 +920,17 @@
                 }
             });
 
-            // UPDATE HEADER UNDERLINE COLOR
             document.querySelector('h2').style.borderBottomColor = currentSelection.color || '#00d2ff';
 
-            // Hide the default top image if using internal images
             const imgEl = document.getElementById('modal-project-img');
             if (currentSelection.img) { 
-                // Only show top image if NOT using the text-based layout with internal images
                 if(!currentSelection.text.includes('<img') && !currentSelection.text.includes('project-img-placeholder')) {
                     imgEl.src = currentSelection.img; 
                     imgEl.style.display = 'block'; 
                     if(currentSelection.color) imgEl.style.boxShadow = `0 10px 40px ${currentSelection.color}60`;
-                    imgEl.style.borderColor = "#fff"; // Ensure border is white in dark mode
+                    imgEl.style.borderColor = "#fff"; 
                 } else {
-                    imgEl.style.display = 'none'; // Hide top image if images are in text
+                    imgEl.style.display = 'none'; 
                 }
             } else { 
                 imgEl.style.display = 'none'; 
