@@ -167,7 +167,7 @@
         }
 
         #modal-card { display: flex; width: 100%; height: 100%; background: #111; position: relative; }
-        #modal-3d { flex: 10; background: #e0e0e0; position: relative; border-right: 5px solid #000; }
+        #modal-3d { flex: 10; background: #e8e8f0; position: relative; border-right: 5px solid #000; overflow: hidden; }
         
         #modal-info { 
             flex: 11; padding: 80px; 
@@ -499,7 +499,7 @@
                 <div class="specs-grid">
                     <div class="spec-item">
                         <span class="spec-label">GPA</span>
-                        <span class="spec-value">3.91</span>
+                        <span class="spec-value">3.89</span>
                     </div>
                     <div class="spec-item">
                         <span class="spec-label">CLASS OF</span>
@@ -627,8 +627,8 @@
             mini: "Bright Ideas.",          
             color: "#ffaa00",
             text: `
-                <h3>IC Fabrication</h3>
-                <img src="portfolio_photos/ic_fab.png" class="project-img glow-yellow" alt="IC Fabrication Workflow">
+                <h3>IC Fabrication (EC 578) — Fall 2026</h3>
+                <img src="portfolio_photos/ic_fab_workflow.png" class="project-img glow-yellow" alt="IC Fabrication Workflow">
                 <p>Executing full-cycle wafer fabrication — oxidation, diffusion, ion implantation, epitaxy, CVD/PVD deposition, photolithography, anisotropic etching, and plasma techniques — with cleanroom inspection at each step. Designing IC layouts under process-imposed constraints on bipolar and MOS devices; characterizing fabricated chips via probe station and correlating parameters to yield loss root causes.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
@@ -644,7 +644,7 @@
 
                 <hr class="project-divider">
 
-                <h3>Reliability Tradeoffs in Advanced Packaging</h3>
+                <h3>Reliability Tradeoffs in Advanced Packaging — Summer 2026</h3>
                 <div class="project-img-placeholder glow-yellow">
                     <span>PACKAGING STUDY</span>
                 </div>
@@ -662,7 +662,7 @@
 
                 <hr class="project-divider">
 
-                <h3>Nonlinear Operational Amplifier Circuits</h3>
+                <h3>Nonlinear Operational Amplifier Circuits — Spring 2026</h3>
                 <img src="portfolio_photos/nonlinear_operational_amplifiers.png" class="project-img glow-yellow" alt="Nonlinear Op-Amp Circuits">
                 <p>Engineered an asymmetrical Schmitt Trigger with a 2 V hysteresis window by integrating a −5.4 V DC reference into the feedback path. Developed a precision "Superdiode" rectifier achieving 2.83 V peak from a 3 V input with only 5.6% error.</p>
                 <div class="skills-container">
@@ -677,7 +677,7 @@
 
                 <hr class="project-divider">
 
-                <h3>Multi-Stage Analog Signal Processor</h3>
+                <h3>Multi-Stage Analog Signal Processor — Spring 2026</h3>
                 <img src="portfolio_photos/multistage.png" class="project-img glow-yellow" alt="Multistage Amplifier">
                 <p>Designed a +90 V/V three-stage BJT amplifier; optimized DC biasing across a 15 V rail, achieving 52.4 kΩ input resistance and stable frequency response to 120 kHz.</p>
                 <div class="skills-container">
@@ -716,21 +716,6 @@
                         <li class="skill-tag">Optocoupler Control</li>
                         <li class="skill-tag">RC Timing Networks</li>
                         <li class="skill-tag">Analog Prototyping</li>
-                    </ul>
-                </div>
-
-                <hr class="project-divider">
-
-                <h3>Interactive 3D Portfolio</h3>
-                <img src="portfolio_photos/portfolio.png" class="project-img glow-yellow" alt="Portfolio Website">
-                <p>Designed and developed an immersive 3D portfolio website using Three.js, featuring a navigable circuit board environment with animated textures and dynamic camera controls to showcase engineering projects in a 3D space.</p>
-                <div class="skills-container">
-                    <div class="skills-title">Skills Used</div>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Three.js</li>
-                        <li class="skill-tag">JavaScript</li>
-                        <li class="skill-tag">WebGL</li>
-                        <li class="skill-tag">3D Modeling</li>
                     </ul>
                 </div>
 
@@ -789,15 +774,121 @@
         };
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xcccccc); 
         const camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 0.01, 5000 );
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize( window.innerWidth, window.innerHeight );
-        renderer.outputColorSpace = THREE.SRGBColorSpace; 
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
         document.body.appendChild( renderer.domElement );
 
+        // --- PARTICLE BACKGROUND ---
+        const bgCanvas = document.createElement('canvas');
+        bgCanvas.width = 1280; bgCanvas.height = 720;
+        const bgCtx = bgCanvas.getContext('2d');
+        const bgTex = new THREE.CanvasTexture(bgCanvas);
+        scene.background = bgTex;
+
+        const NUM_PARTICLES = 160;
+        const bgParticles = Array.from({ length: NUM_PARTICLES }, () => ({
+            x: Math.random() * bgCanvas.width,
+            y: Math.random() * bgCanvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 2.5 + 1.5,
+            hue: Math.random() * 30 + 255
+        }));
+        let bgT = 0;
+
+        function drawBg() {
+            bgT += 0.006;
+            const w = bgCanvas.width, h = bgCanvas.height;
+            const grad = bgCtx.createLinearGradient(0, 0, w, h);
+            grad.addColorStop(0, `hsl(${265 + Math.sin(bgT)*8},55%,93%)`);
+            grad.addColorStop(1, `hsl(${280 + Math.cos(bgT*0.7)*7},50%,88%)`);
+            bgCtx.fillStyle = grad;
+            bgCtx.fillRect(0, 0, w, h);
+            bgParticles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < -5) p.x = w+5; if (p.x > w+5) p.x = -5;
+                if (p.y < -5) p.y = h+5; if (p.y > h+5) p.y = -5;
+                bgCtx.beginPath();
+                bgCtx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+                bgCtx.fillStyle = `hsla(${p.hue},65%,50%,0.65)`;
+                bgCtx.fill();
+            });
+            for (let i = 0; i < bgParticles.length; i++) {
+                for (let j = i+1; j < bgParticles.length; j++) {
+                    const dx = bgParticles[i].x - bgParticles[j].x;
+                    const dy = bgParticles[i].y - bgParticles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 130) {
+                        bgCtx.beginPath();
+                        bgCtx.moveTo(bgParticles[i].x, bgParticles[i].y);
+                        bgCtx.lineTo(bgParticles[j].x, bgParticles[j].y);
+                        bgCtx.strokeStyle = `rgba(120,80,200,${0.28*(1-dist/130)})`;
+                        bgCtx.lineWidth = 0.8;
+                        bgCtx.stroke();
+                    }
+                }
+            }
+            bgTex.needsUpdate = true;
+        }
+
         const popupScene = new THREE.Scene();
-        popupScene.background = new THREE.Color(0xe0e0e0); 
+        const popupBgCanvas = document.createElement('canvas');
+        popupBgCanvas.width = 800; popupBgCanvas.height = 800;
+        const popupBgCtx = popupBgCanvas.getContext('2d');
+        const popupBgTex = new THREE.CanvasTexture(popupBgCanvas);
+        popupScene.background = popupBgTex;
+
+        const POPUP_COLORS = {
+            '#00d2ff': { h: 195, lineRgb: '0,160,210' },
+            '#00ff88': { h: 150, lineRgb: '0,180,100' },
+            '#ffaa00': { h: 35,  lineRgb: '200,140,0' },
+            '#ff6600': { h: 20,  lineRgb: '210,80,0'  }
+        };
+        let popupParticleColor = POPUP_COLORS['#00d2ff'];
+        let popupBgT = 0;
+        const POPUP_NUM = 60;
+        const popupPts = Array.from({ length: POPUP_NUM }, () => ({
+            x: Math.random() * 800, y: Math.random() * 800,
+            vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5,
+            r: Math.random()*4+3
+        }));
+
+        function drawPopupBg() {
+            popupBgT += 0.007;
+            const w = popupBgCanvas.width, h = popupBgCanvas.height;
+            const grad = popupBgCtx.createLinearGradient(0, 0, w, h);
+            grad.addColorStop(0, `hsl(${popupParticleColor.h + Math.sin(popupBgT)*6},55%,93%)`);
+            grad.addColorStop(1, `hsl(${popupParticleColor.h + 15 + Math.cos(popupBgT*0.7)*6},50%,88%)`);
+            popupBgCtx.fillStyle = grad;
+            popupBgCtx.fillRect(0, 0, w, h);
+            popupPts.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < -5) p.x = w+5; if (p.x > w+5) p.x = -5;
+                if (p.y < -5) p.y = h+5; if (p.y > h+5) p.y = -5;
+                popupBgCtx.beginPath();
+                popupBgCtx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+                popupBgCtx.fillStyle = `hsla(${popupParticleColor.h},70%,48%,0.6)`;
+                popupBgCtx.fill();
+            });
+            for (let i = 0; i < popupPts.length; i++) {
+                for (let j = i+1; j < popupPts.length; j++) {
+                    const dx = popupPts[i].x-popupPts[j].x, dy = popupPts[i].y-popupPts[j].y;
+                    const dist = Math.sqrt(dx*dx+dy*dy);
+                    if (dist < 110) {
+                        popupBgCtx.beginPath();
+                        popupBgCtx.moveTo(popupPts[i].x, popupPts[i].y);
+                        popupBgCtx.lineTo(popupPts[j].x, popupPts[j].y);
+                        popupBgCtx.strokeStyle = `rgba(${popupParticleColor.lineRgb},${0.28*(1-dist/110)})`;
+                        popupBgCtx.lineWidth = 0.8;
+                        popupBgCtx.stroke();
+                    }
+                }
+            }
+            popupBgTex.needsUpdate = true;
+        }
+
         const popupCamera = new THREE.PerspectiveCamera( 45, 1, 0.1, 100 );
         popupCamera.position.set(2, 2, 4); 
         const pAmbient = new THREE.AmbientLight(0xffffff, 0.8); popupScene.add(pAmbient);
@@ -805,7 +896,7 @@
         const popupRenderer = new THREE.WebGLRenderer({ antialias: true });
         document.getElementById('modal-3d').appendChild(popupRenderer.domElement);
         const popupControls = new OrbitControls(popupCamera, popupRenderer.domElement);
-        popupControls.enableDamping = true; popupControls.autoRotate = true; 
+        popupControls.enableDamping = true; popupControls.autoRotate = true;
 
         const loader = new GLTFLoader();
         scene.add( new THREE.AmbientLight( 0xffffff, 0.7 ) );
@@ -1025,6 +1116,7 @@
                 popupScene.add(clone);
                 popupControls.reset(); popupControls.target.set(0,0,0);
             }
+            popupParticleColor = POPUP_COLORS[currentSelection.color] || POPUP_COLORS['#00d2ff'];
             setTimeout(() => {
                 const container = document.getElementById('modal-3d');
                 popupRenderer.setSize(container.clientWidth, container.clientHeight);
@@ -1051,6 +1143,7 @@
 
         function animate() {
             requestAnimationFrame( animate );
+            drawBg();
             if (wireTexture) { wireTexture.offset.x -= 0.01; } 
 
             if (explosion) {
@@ -1105,6 +1198,7 @@
                 if (camera.position.distanceTo(targetPosition) < 0.05) zoomActive = false;
             }
             if (document.getElementById('modal-overlay').style.display === 'flex') {
+                drawPopupBg();
                 popupControls.update(); popupRenderer.render(popupScene, popupCamera);
             }
             controls.update(); renderer.render( scene, camera );
@@ -1112,7 +1206,8 @@
         animate();
         window.addEventListener( 'resize', () => { 
             camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); 
-            renderer.setSize( window.innerWidth, window.innerHeight ); 
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            bgCanvas.width = window.innerWidth; bgCanvas.height = window.innerHeight; 
             if(document.getElementById('modal-overlay').style.display === 'flex') {
                 const container = document.getElementById('modal-3d');
                 popupCamera.aspect = container.clientWidth / container.clientHeight;
