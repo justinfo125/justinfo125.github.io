@@ -42,7 +42,6 @@
         
         .nav-btn:hover { transform: translateY(-2px); background: #222; }
 
-        /* BUTTON GLOWS */
         #btn-battery { box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); border-color: #00d2ff; }
         #btn-wire { box-shadow: 0 0 15px rgba(0, 255, 136, 0.4); border-color: #00ff88; }
         #btn-bulb { box-shadow: 0 0 15px rgba(255, 170, 0, 0.4); border-color: #ffaa00; }
@@ -492,46 +491,56 @@
             mini: "Powering the System.", 
             color: "#00d2ff", 
             text: `
-                <div class="about-role">SEMICONDUCTOR & ELECTRICAL ENGINEER</div>
-                <div class="about-school">Boston University</div>
+                <div class="about-role">PROCESS & SEMICONDUCTOR ENGINEER</div>
+                <div class="about-school">Boston University College of Engineering</div>
                 
-                <p>Hello! I'm Justin Cheong. My expertise lies in semiconductor device physics and microfabrication. I specialize in modeling carrier transport in wide-bandgap materials and designing high-performance analog circuitry.</p>
+                <p>I'm Justin Cheong — an EE student specializing in semiconductor device physics, microfabrication, and process integration. My work spans TCAD simulation of wide-bandgap devices, analog circuit design, and hands-on semiconductor laser testing at IPG Photonics.</p>
                 
                 <div class="specs-grid">
                     <div class="spec-item">
                         <span class="spec-label">GPA</span>
-                        <span class="spec-value">3.89</span>
+                        <span class="spec-value">3.91</span>
                     </div>
                     <div class="spec-item">
                         <span class="spec-label">CLASS OF</span>
                         <span class="spec-value">2027</span>
                     </div>
                     <div class="spec-item">
-                        <span class="spec-label">LOCATION</span>
-                        <span class="spec-value">Boston</span>
+                        <span class="spec-label">DEGREE</span>
+                        <span class="spec-value">B.S. EE</span>
                     </div>
                 </div>
 
                 <hr class="project-divider">
 
                 <h3>Technical Arsenal</h3>
-                
-                <div class="skill-category-label">SEMICONDUCTORS & TOOLS</div>
+
+                <div class="skill-category-label">SEMICONDUCTORS & FABRICATION</div>
                 <ul class="skills-list">
-                    <li class="skill-tag">TCAD (Sentaurus)</li>
-                    <li class="skill-tag">GaN HFET Modeling</li>
-                    <li class="skill-tag">BJT Analysis</li>
-                    <li class="skill-tag">Probe-Station Testing</li>
+                    <li class="skill-tag">Sentaurus TCAD</li>
+                    <li class="skill-tag">GaN HFET / HEMT Modeling</li>
+                    <li class="skill-tag">Probe Station</li>
+                    <li class="skill-tag">Cleanroom Processes</li>
+                    <li class="skill-tag">SPC / Six Sigma</li>
+                    <li class="skill-tag">Zemax</li>
                 </ul>
 
-                <div class="skill-category-label">ENGINEERING SOFTWARE</div>
+                <div class="skill-category-label">PROGRAMMING & TOOLS</div>
                 <ul class="skills-list">
-                    <li class="skill-tag">MATLAB</li>
-                    <li class="skill-tag">Verilog (Vivado)</li>
-                    <li class="skill-tag">C++</li>
                     <li class="skill-tag">Python</li>
+                    <li class="skill-tag">MATLAB</li>
+                    <li class="skill-tag">C++</li>
+                    <li class="skill-tag">Verilog (Vivado)</li>
                     <li class="skill-tag">Linux / Git</li>
                     <li class="skill-tag">Onshape (CAD)</li>
+                    <li class="skill-tag">Arduino</li>
+                </ul>
+
+                <div class="skill-category-label">CERTIFICATIONS</div>
+                <ul class="skills-list">
+                    <li class="skill-tag">Master Quality Management (Coursera)</li>
+                    <li class="skill-tag">Semiconductor Packaging — ASU / Intel</li>
+                    <li class="skill-tag">Advanced Packaging Cert — SEMI University</li>
                 </ul>
             `
         };
@@ -541,34 +550,36 @@
             mini: "Connecting the dots.",    
             color: "#00ff88", 
             text: `
+                <div class="resume-header">Professional Experience</div>
+
+                <div class="resume-item">
+                    <div class="resume-job-title">IPG Photonics — Engineering Intern, Laser Test & Manufacturing (Summer 2026)</div>
+                    <div class="resume-detail-box">Supporting semiconductor laser testing, characterization, and automated manufacturing processes; qualifying process steps through yield, performance, and repeatability studies to drive manufacturing optimization.</div>
+                    <div class="resume-detail-box">Analyzing performance and yield data across manufacturing steps, identifying root causes of variation and providing data-driven feedback to process engineers for step-level improvement.</div>
+                    <div class="resume-detail-box">Troubleshooting hardware/software issues on automated test stations and production equipment; sustaining process stability and throughput through systematic debugging and corrective action.</div>
+                </div>
+
                 <div class="resume-header">Research</div>
 
                 <div class="resume-item">
-                    <div class="resume-job-title">Lead Researcher | Characterization of GaN HFETs</div>
-                    <div class="resume-detail-box">Developing a TCAD framework to extract temperature-dependent electrical parameters (gm, gds, capacitances) across varying bias conditions.</div>
-                    <div class="resume-detail-box">Analyzing parameter drift and sensitivity to identify performance stability and reliability trends in power electronics.</div>
+                    <div class="resume-job-title">Lead Researcher — Temperature-Dependent Small-Signal Characterization of GaN HFETs</div>
+                    <div class="resume-detail-box">Built a TCAD simulation framework to extract device parameters (gm, gds, capacitances) across temperature and bias; identified conditions causing performance degradation and spec non-compliance relevant to process integration decisions.</div>
+                    <div class="resume-detail-box">Applied data-driven analysis to map parameter variation to process-sensitive device behavior, demonstrating root-cause reasoning across device-process interactions directly applicable to yield engineering.</div>
                 </div>
 
                 <div class="resume-item">
-                    <div class="resume-job-title">Undergraduate Research Assistant | Computational Electronics Lab</div>
-                    <div class="resume-detail-box">Modeling Single Event Effects (SEE) and heavy-ion strike dynamics in GaN HEMTs using Sentaurus TCAD.</div>
-                    <div class="resume-detail-box">Quantifying 2D/3D electric-field redistribution and evaluating radiation-hardening-by-design (RHBD) strategies for aerospace applications.</div>
+                    <div class="resume-job-title">Undergraduate Research Assistant — Computational Electronics Laboratory</div>
+                    <div class="resume-detail-box">Simulated charge collection and transient current dynamics in GaN HEMTs under heavy-ion radiation using Sentaurus TCAD; identified charge buildup as primary driver of device failure under extreme bias conditions.</div>
+                    <div class="resume-detail-box">Evaluated RHBD strategies including field plate optimization and geometry modifications — systematic process-to-device outcome analysis quantifying engineering intervention impact across multiple design variables.</div>
                 </div>
 
                 <div class="resume-header">Education</div>
                 
                 <div class="resume-item">
                     <div class="resume-job-title">Boston University College of Engineering</div>
-                    <div class="resume-detail-box">B.S. in Electrical Engineering (Expected May 2027)</div>
-                    <div class="resume-detail-box">GPA: 3.89/4.00 | Dean's List Recipient (4 Semesters)</div>
-                    <div class="resume-detail-box"><b>Relevant Coursework:</b> Physics of Semiconductor Devices, Analog Electronics, Signals and Systems, Waves and Modern Physics, Control Systems, Software Engineering.</div>
-                </div>
-
-                <div class="resume-header">Professional Experience</div>
-
-                <div class="resume-item">
-                    <div class="resume-job-title">Powdhar Construction Management (June 2025 – Aug 2025)</div>
-                    <div class="resume-detail-box">Reviewed electrical blueprints for power, lighting, and low-voltage control systems and verified field conditions against engineering plans.</div>
+                    <div class="resume-detail-box">B.S. in Electrical Engineering — Expected May 2027</div>
+                    <div class="resume-detail-box">GPA: 3.89 / 4.00 | Dean's List (4 Semesters)</div>
+                    <div class="resume-detail-box"><b>Relevant Coursework:</b> Physics of Semiconductor Devices & Materials, Fabrication Technology of Integrated Circuits, Analog Electronics, Signals & Systems, Waves & Modern Physics, Electromagnetic Systems, Control Systems.</div>
                 </div>
             `
         };
@@ -581,16 +592,32 @@
                 <div class="resume-header">Honors & Awards</div>
 
                 <div class="resume-item">
-                    <div class="resume-job-title">Boston University</div>
-                    <div class="resume-detail-box">Dean's List Recipient (4 Semesters: Spring 2024 - Fall 2025)</div>
-                    <div class="resume-detail-box">Maintained a 3.89 GPA across intensive semiconductor and analog engineering coursework.</div>
+                    <div class="resume-job-title">Boston University — Dean's List</div>
+                    <div class="resume-detail-box">4 consecutive semesters (Spring 2024 – Fall 2025) maintaining a 3.89 GPA across intensive semiconductor device, fabrication, and analog circuit coursework.</div>
+                </div>
+
+                <div class="resume-header">Certifications</div>
+
+                <div class="resume-item">
+                    <div class="resume-job-title">Master Quality Management — Coursera</div>
+                    <div class="resume-detail-box">Applied SPC, Six Sigma, and Lean methodologies for process variation analysis and systematic root-cause problem solving — directly applicable to yield engineering workflows.</div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-job-title">Semiconductor Packaging Specialization — Arizona State University / Intel</div>
+                    <div class="resume-detail-box">Completed 3-course series on heterogeneous integration, thermal management, and 2.5D/3D reliability; studied manufacturing flows and process-control concepts for high-volume semiconductor assembly.</div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-job-title">Advanced Semiconductor Packaging Certification — SEMI University</div>
+                    <div class="resume-detail-box">Certified in assembly testing, fan-out, wafer-level packaging, and high-volume manufacturing standards.</div>
                 </div>
 
                 <div class="resume-header">Competitions</div>
 
                 <div class="resume-item">
-                    <div class="resume-job-title">HackHardware x RASTIC</div>
-                    <div class="resume-detail-box">Competitor: Designed and built a competitive autonomous robot (3rd Place).</div>
+                    <div class="resume-job-title">HackHardware x RASTIC — 3rd Place</div>
+                    <div class="resume-detail-box">Designed and built a competitive autonomous coin-collecting robot with a servo-controlled magnetic arm mechanism. Finished 3rd place out of all competing teams.</div>
                 </div>
             `
         };
@@ -600,32 +627,36 @@
             mini: "Bright Ideas.",          
             color: "#ffaa00",
             text: `
-                <h3>IC Fabrication Project (Upcoming Fall 2026)</h3>
-                <div class="project-img-placeholder glow-yellow">
-                    <span>CLEANROOM PHASE</span>
-                </div>
-                <p>Designing an integrated circuit at the wafer level and manually fabricating devices from plain silicon wafers using photolithography, oxidation, and etching. Evaluating performance through probe-station characterization.</p>
+                <h3>IC Fabrication</h3>
+                <img src="portfolio_photos/ic_fab.png" class="project-img glow-yellow" alt="IC Fabrication Workflow">
+                <p>Executing full-cycle wafer fabrication — oxidation, diffusion, ion implantation, epitaxy, CVD/PVD deposition, photolithography, anisotropic etching, and plasma techniques — with cleanroom inspection at each step. Designing IC layouts under process-imposed constraints on bipolar and MOS devices; characterizing fabricated chips via probe station and correlating parameters to yield loss root causes.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
-                        <li class="skill-tag">Microfabrication</li>
                         <li class="skill-tag">Photolithography</li>
-                        <li class="skill-tag">Semiconductor Process Flow</li>
-                        <li class="skill-tag">Wafer-Level Inspection</li>
+                        <li class="skill-tag">CVD / PVD</li>
+                        <li class="skill-tag">Ion Implantation</li>
+                        <li class="skill-tag">Plasma Etching</li>
+                        <li class="skill-tag">Probe Station</li>
+                        <li class="skill-tag">Yield Analysis</li>
                     </ul>
                 </div>
 
                 <hr class="project-divider">
 
-                <h3>Smart Glasses HUD</h3>
-                <img src="portfolio_photos/smartglasses.png" class="project-img glow-yellow" alt="Smart Glasses">
-                <p>Designed and assembled a wearable optical system using a beam-splitter and semi-reflective combiner glass to overlay digital notifications onto a transparent lens.</p>
+                <h3>Reliability Tradeoffs in Advanced Packaging</h3>
+                <div class="project-img-placeholder glow-yellow">
+                    <span>PACKAGING STUDY</span>
+                </div>
+                <p>Evaluated process integration tradeoffs across flip-chip, Fan-Out, 2.5D interposer, and 3D chiplet architectures; analyzed CTE mismatch, warpage-induced stress, and thermal constraints as process-limiting factors. Synthesized findings into a yield-oriented framework linking architecture choices to manufacturability and process integration constraints at high-density interconnect scales.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
-                        <li class="skill-tag">Arduino</li>
-                        <li class="skill-tag">Optics & Physics</li>
-                        <li class="skill-tag">Hardware Prototyping</li>
+                        <li class="skill-tag">Heterogeneous Integration</li>
+                        <li class="skill-tag">Thermal Analysis</li>
+                        <li class="skill-tag">CTE Mismatch</li>
+                        <li class="skill-tag">Process Integration</li>
+                        <li class="skill-tag">2.5D / 3D Packaging</li>
                     </ul>
                 </div>
 
@@ -633,11 +664,11 @@
 
                 <h3>Nonlinear Operational Amplifier Circuits</h3>
                 <img src="portfolio_photos/nonlinear_operational_amplifiers.png" class="project-img glow-yellow" alt="Nonlinear Op-Amp Circuits">
-                <p>Engineered an asymmetrical Schmitt Trigger with a narrow 2V hysteresis window and developed a "Superdiode" precision rectifier that reduced the 0.7V threshold to near zero with only 5.6% error[cite: 134, 135, 136].</p>
+                <p>Engineered an asymmetrical Schmitt Trigger with a 2 V hysteresis window by integrating a −5.4 V DC reference into the feedback path. Developed a precision "Superdiode" rectifier achieving 2.83 V peak from a 3 V input with only 5.6% error.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
-                        <li class="skill-tag">Schmitt Trigger</li>
+                        <li class="skill-tag">Schmitt Trigger Design</li>
                         <li class="skill-tag">Precision Rectification</li>
                         <li class="skill-tag">Hysteresis Modeling</li>
                         <li class="skill-tag">Analog Signal Processing</li>
@@ -646,32 +677,30 @@
 
                 <hr class="project-divider">
 
-                <h3>Optical Signal-to-Audio Synthesizer</h3>
-                <div class="project-img-placeholder glow-yellow">
-                    <span>IMAGE IN PROGRESS</span>
-                </div>
-                <p>Developed a light-sensitive audio synthesizer (Optical Theremin) using a TLC555 timer IC and a phototransistor array to translate real-time ambient light fluctuations into variable frequency square-wave tones.</p>
-                <div class="skills-container">
-                    <div class="skills-title">Skills Used</div>
-                    <ul class="skills-list">
-                        <li class="skill-tag">TLC555 Timer</li>
-                        <li class="skill-tag">Optoelectronics</li>
-                        <li class="skill-tag">Frequency Modulation</li>
-                        <li class="skill-tag">Analog Prototyping</li>
-                    </ul>
-                </div>
-
-                <hr class="project-divider">
-
-                <h3>Multistage BJT Amplifier Design</h3>
+                <h3>Multi-Stage Analog Signal Processor</h3>
                 <img src="portfolio_photos/multistage.png" class="project-img glow-yellow" alt="Multistage Amplifier">
-                <p>Designed and prototyped a +90 V/V three-stage BJT amplifier, optimizing DC biasing across a 15V rail while achieving a high 52.4 kΩ input resistance and characterizing bandwidth up to 120kHz.</p>
+                <p>Designed a +90 V/V three-stage BJT amplifier; optimized DC biasing across a 15 V rail, achieving 52.4 kΩ input resistance and stable frequency response to 120 kHz.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
                         <li class="skill-tag">BJT Small-Signal Modeling</li>
                         <li class="skill-tag">Miller Effect Analysis</li>
                         <li class="skill-tag">Inter-stage Biasing</li>
+                        <li class="skill-tag">Frequency Response</li>
+                    </ul>
+                </div>
+
+                <hr class="project-divider">
+
+                <h3>Smart Glasses HUD</h3>
+                <img src="portfolio_photos/smart_glasses.png" class="project-img glow-yellow" alt="Smart Glasses">
+                <p>Designed and assembled a wearable optical system using a beam-splitter and semi-reflective combiner glass to overlay digital notifications onto a transparent lens.</p>
+                <div class="skills-container">
+                    <div class="skills-title">Skills Used</div>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Arduino</li>
+                        <li class="skill-tag">Optics & Physics</li>
+                        <li class="skill-tag">Hardware Prototyping</li>
                     </ul>
                 </div>
 
@@ -686,6 +715,22 @@
                         <li class="skill-tag">JRC4558 Op-Amp</li>
                         <li class="skill-tag">Optocoupler Control</li>
                         <li class="skill-tag">RC Timing Networks</li>
+                        <li class="skill-tag">Analog Prototyping</li>
+                    </ul>
+                </div>
+
+                <hr class="project-divider">
+
+                <h3>Interactive 3D Portfolio</h3>
+                <img src="portfolio_photos/portfolio.png" class="project-img glow-yellow" alt="Portfolio Website">
+                <p>Designed and developed an immersive 3D portfolio website using Three.js, featuring a navigable circuit board environment with animated textures and dynamic camera controls to showcase engineering projects in a 3D space.</p>
+                <div class="skills-container">
+                    <div class="skills-title">Skills Used</div>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Three.js</li>
+                        <li class="skill-tag">JavaScript</li>
+                        <li class="skill-tag">WebGL</li>
+                        <li class="skill-tag">3D Modeling</li>
                     </ul>
                 </div>
 
@@ -699,15 +744,16 @@
                     <ul class="skills-list">
                         <li class="skill-tag">Verilog</li>
                         <li class="skill-tag">Vivado</li>
-                        <li class="skill-tag">Digital Logic</li>
+                        <li class="skill-tag">Digital Logic Design</li>
+                        <li class="skill-tag">FSM Design</li>
                     </ul>
                 </div>
 
                 <hr class="project-divider">
 
-                <h3>Bedside Beacon: P2P Communication</h3>
+                <h3>Bedside Beacon: P2P Laser Communication</h3>
                 <img src="portfolio_photos/bedsidebeacon.png" class="project-img glow-yellow" alt="Bedside Beacon">
-                <p>Developed a light-based transmission system using a 5mW laser and lens-focused receiver to decode character messages for patients with limited mobility[cite: 6, 8, 14, 15].</p>
+                <p>Developed a light-based transmission system using a 5 mW laser and lens-focused receiver to decode character messages for patients with limited mobility.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
@@ -722,13 +768,14 @@
 
                 <h3>Autonomous Coin-Collecting Robot</h3>
                 <img src="portfolio_photos/rover.png" class="project-img glow-yellow" alt="Robot">
-                <p>Engineered a servo-controlled robotic arm for the HackHardware competition, using a magnet mechanism to autonomously pick up and deposit metallic coins into bins (3rd Place finish).</p>
+                <p>Engineered a servo-controlled robotic arm for the HackHardware competition, using a magnet mechanism to autonomously pick up and deposit metallic coins into bins. Finished 3rd place.</p>
                 <div class="skills-container">
                     <div class="skills-title">Skills Used</div>
                     <ul class="skills-list">
                         <li class="skill-tag">Arduino</li>
                         <li class="skill-tag">Servo Motors</li>
-                        <li class="skill-tag">SolidWorks (CAD)</li>
+                        <li class="skill-tag">Onshape (CAD)</li>
+                        <li class="skill-tag">Autonomous Control</li>
                     </ul>
                 </div>
             `
@@ -749,7 +796,6 @@
         renderer.outputColorSpace = THREE.SRGBColorSpace; 
         document.body.appendChild( renderer.domElement );
 
-        // --- POPUP SCENE ---
         const popupScene = new THREE.Scene();
         popupScene.background = new THREE.Color(0xe0e0e0); 
         const popupCamera = new THREE.PerspectiveCamera( 45, 1, 0.1, 100 );
@@ -937,23 +983,17 @@
             
             const skillsDivs = document.querySelectorAll('.skills-container');
             skillsDivs.forEach(div => {
-                if(currentSelection.color) {
-                    div.style.borderLeftColor = currentSelection.color;
-                }
+                if(currentSelection.color) { div.style.borderLeftColor = currentSelection.color; }
             });
             
             const categoryLabels = document.querySelectorAll('.skill-category-label');
             categoryLabels.forEach(label => {
-                if(currentSelection.color) {
-                    label.style.borderLeftColor = currentSelection.color;
-                }
+                if(currentSelection.color) { label.style.borderLeftColor = currentSelection.color; }
             });
 
             const detailBoxes = document.querySelectorAll('.resume-detail-box');
             detailBoxes.forEach(box => {
-                if(currentSelection.color) {
-                    box.style.borderLeftColor = currentSelection.color;
-                }
+                if(currentSelection.color) { box.style.borderLeftColor = currentSelection.color; }
             });
 
             document.querySelector('h2').style.borderBottomColor = currentSelection.color || '#00d2ff';
@@ -1017,8 +1057,7 @@
                 explosion.scale.addScalar(0.15);
                 explosion.material.opacity -= 0.04;
                 if (explosion.scale.x > explosionMaxSize || explosion.material.opacity <= 0) {
-                    scene.remove(explosion);
-                    explosion = null;
+                    scene.remove(explosion); explosion = null;
                 }
             }
             if (rocketContainer) {
